@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   # UPDATE
   # Build a pre-populated form to update a row
-  get("/update_director", ":controller => Directors", :action => "edit_form")
+  get("/directors/:id/edit", ":controller => Directors", :action => "edit_form")
   # Receive inputs and save the updated row
   get("/update_director/:id", ":controller => Directors", :action => "update_row")
 
