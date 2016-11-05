@@ -5,23 +5,37 @@ class DirectorsController < ApplicationController
 
   def create_row
     d = Director.new
+    d.dob = params[:dob]
+    d.name = params[:name]
+    d.bio = params[:bio]
+    d.image_url = params[:image_url]
     d.save
     redirect_to("http://localhost:3000/directors")
   end
 
   # READ
   def index
-    d = Director.all
+    @director = Director.all
   end
 
   def show
-    d = Director.find(:id)
+    @director = Director.find(params["id"])
+    @director.id = params["id"]
+    @director.dob = params["dob"]
+    @director.name = params["name"]
+    @director.bio = params["bio"]
+    @director.image_url = params["image_url"]
   end
 
   # UPDATE
   def edit_form
-    d = Director.find(:id)
-    d.save
+    @director = Director.find(params["id"])
+    @director.id = params["id"]
+    @director.dob = params["dob"]
+    @director.name = params["name"]
+    @director.bio = params["bio"]
+    @director.image_url = params["image_url"]
+    @director.save
   end
 
   def update_row
@@ -30,7 +44,7 @@ class DirectorsController < ApplicationController
 
   # DELETE
   def destroy
-    d = Director.find(:id)
+    d = Director.find(params[:id])
     d.destroy
     d.save
     redirect_to("http://localhost:3000/directors")
