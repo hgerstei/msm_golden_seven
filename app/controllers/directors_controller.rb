@@ -26,11 +26,18 @@ class DirectorsController < ApplicationController
   # UPDATE
   def edit_form
     @director = Director.find(params[:id])
-    @director.save
   end
 
   def update_row
-    redirect_to("http://localhost:3000/directors")
+    @director = Director.find(params[:id])
+
+    @director.dob = params[:the_dob]
+    @director.name = params[:the_name]
+    @director.bio = params[:the_bio]
+    @director.image_url = params[:the_image_url]
+    @director.save
+
+    render("show")
   end
 
   # DELETE

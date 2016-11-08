@@ -4,12 +4,12 @@ class ActorsController < ApplicationController
   end
 
   def create_row
-    a = Actor.new
-    a.dob = params[:dob]
-    a.name = params[:name]
-    a.bio = params[:bio]
-    a.image_url = params[:image_url]
-    a.save
+    @actor = Actor.new
+    @actor.dob = params[:dob]
+    @actor.name = params[:name]
+    @actor.bio = params[:bio]
+    @actor.image_url = params[:image_url]
+    @actor.save
     redirect_to("http://localhost:3000/actors")
   end
 
@@ -26,19 +26,26 @@ class ActorsController < ApplicationController
   # UPDATE
   def edit_form
     @actor = Actor.find(params[:id])
-    @actor.save
   end
 
   def update_row
     @actor = Actor.find(params[:id])
-    render("http://localhost:3000/actors")
+
+    @actor.dob = params[:dob]
+    @actor.name = params[:name]
+    @actor.bio = params[:bio]
+    @actor.image_url = params[:image_url]
+
+    @actor.save
+
+    render("show")
   end
 
   # DELETE
   def destroy
-    a = Actor.find(params[:id])
-    a.destroy
-    a.save
+    p = Actor.find(params[:id])
+    p.destroy
+    p.save
     redirect_to("http://localhost:3000/actors")
   end
 

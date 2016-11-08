@@ -1,23 +1,51 @@
-<h1>Edit Director</h1>
+<div class="page-header">
+  <h1>Edit Director #<%= @director.id %></h1>
+</div>
 
-<form action: "http://localhost:3000/update_director/:id">
-<div>
-    <label for="director_name">Name:</label>
-    <input id="director_name" type="text" name="name" value="<%= @director.name %>" >
+<form action="/update_director/<%= @director.id %>" class="form-horizontal">
+  <!-- Label and input for dob -->
+  <div class="form-group">
+    <label for="dob" class="col-sm-2 control-label">
+      Dob
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="dob" name="the_dob" placeholder="Dob" class="form-control" value="<%= @director.dob %>">
+    </div>
   </div>
-  <div>
-    <label for="director_bio">Bio:</label>
-    <input id="director_bio" type="text" name="bio" value="<%= @director.bio %>">
+
+  <!-- Label and input for name -->
+  <div class="form-group">
+    <label for="name" class="col-sm-2 control-label">
+      Name
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="name" name="the_name" placeholder="Name" class="form-control" value="<%= @director.name %>">
+    </div>
   </div>
-  <div>
-    <label for="director_dob">DOB:</label>
-    <input id="director_dob" type="text" name="dob" value="<%= @director.dob %>">
+
+  <!-- Label and input for bio -->
+  <div class="form-group">
+    <label for="bio" class="col-sm-2 control-label">
+      Bio
+    </label>
+    <div class="col-sm-10">
+      <textarea id="bio" name="the_bio" placeholder="Bio" class="form-control" rows="3"><%= @director.bio %></textarea>
+    </div>
   </div>
-  <div>
-    <label for="director_image_url">Image URL:</label>
-    <input id="director_image_url" type="text" name="image" value="<%= @director.image_url %>">
+
+  <!-- Label and input for image_url -->
+  <div class="form-group">
+    <label for="image_url" class="col-sm-2 control-label">
+      Image url
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="image_url" name="the_image_url" placeholder="Image url" class="form-control" value="<%= @director.image_url %>">
+    </div>
   </div>
-  <div>
-    <button>Update Director</button>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <input type="submit" value="Update Director" class="btn btn-primary">
+    </div>
   </div>
 </form>
