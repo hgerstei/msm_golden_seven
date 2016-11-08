@@ -26,21 +26,24 @@ Rails.application.routes.draw do
   # ------------------- Actors --------------------
   # CREATE
   # See a blank form to build a new row, e.g., http://localhost:3000/directors/new_form
-
+  get("/actors/new_form", :controller => "actors", :action => "new_form")
   # Receieve inputs and actually save new row
+  get("/actors/create_row", :controller => "actors", :action => "create_row")
 
   # READ
-  # See all rows in a table, e.g., http://localhost:3000/directors
-
+  get("/actors", :controller => "actors", :action => "index")
   # See details in an individual row, e.g., http://localhost:3000/directors/4
+  get("/actors/:id", :controller => "actors", :action => "show")
 
   # UPDATE
   # Build a pre-populated form to update a row
-
+  get("/actors/:id/edit", :controller => "actors", :action => "edit_form")
   # Receive inputs and save the updated row
+  get("/update_actor/:id", :controller => "actors", :action => "update_row")
 
   # DELETE
   # Delete an individual row, e.g., http://localhost:3000/delete_director/4
+  get("/delete_actor/:id", :controller => "actors", :action => "destroy")
 
 
   # ------------------- Movies --------------------
